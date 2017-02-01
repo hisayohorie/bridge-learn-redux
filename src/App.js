@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
 import { addProduct } from './actions';
+import {deleteProduct} from './actions';
 
 
 import { API_BASE_URL } from './constants/api-url';
@@ -13,6 +14,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   addProduct,
+  deleteProduct,
 }
 
 class App extends Component {
@@ -26,11 +28,12 @@ class App extends Component {
   }
 
   render() {
-    const { products, addProduct } = this.props;
+    const { products, addProduct, deleteProduct } = this.props;
     return (
       <div>
         {products.map(product => <div>{product.name}</div>)}
         <button onClick={ () => addProduct({ name: 'Sofa' }) }>Add Sofa</button>
+        <button onClick={ () => deleteProduct({ name: 'Table' })}>Delete Table</button>
       </div>
     );
   }
