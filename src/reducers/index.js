@@ -12,6 +12,9 @@ export const products = (state = INITIAL_STATE.products, { type, payload }) => {
     return [...state, payload.product];
   }
 
+  if (type === ACTION_TYPES.deleteProduct) {
+    return state.filter(product=> product.name !== payload.product)
+  }
   return state;
 };
 
